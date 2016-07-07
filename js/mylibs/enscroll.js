@@ -772,7 +772,7 @@
 					data = $this.data( 'enscroll' ),
 					settings, paneHeight, paneWidth,
 					trackWrapper, pct, track, trackWidth, trackHeight,
-					$scrollUpBtn, $scrollDownBtn, $scrollLeftBtn, $scrollRightBtn,
+					$scrollUpBtnHeight, $scrollDownBtnHeight, $scrollLeftBtnWidth, $scrollRightBtnWidth,
 					handle, handleWidth, handleHeight, prybar;
 
 				if ( !data ) {
@@ -787,13 +787,13 @@
 						paneHeight = $this.innerHeight();
 						pct = paneHeight / this.scrollHeight;
 						track = $( trackWrapper ).find( '.enscroll-track' )[0];
-						$scrollUpBtn = $( trackWrapper ).find( '.' + settings.scrollUpButtonClass );
-						$scrollDownBtn = $(trackWrapper).find( '.' + settings.scrollDownButtonClass );
+						$scrollUpBtnHeight = $( trackWrapper ).find( '.' + settings.scrollUpButtonClass ).outerHeight() || 0;
+						$scrollDownBtnHeight = $(trackWrapper).find( '.' + settings.scrollDownButtonClass ).outerHeight() || 0;
 
 						trackHeight = settings.horizontalScrolling ?
 							paneHeight - $( data.horizontalTrackWrapper ).find( '.enscroll-track' ).outerHeight() :
 							paneHeight;
-						trackHeight -= $( track ).outerHeight() - $( track ).height() + $scrollUpBtn.outerHeight() + $scrollDownBtn.outerHeight();
+						trackHeight -= $( track ).outerHeight() - $( track ).height() + $scrollUpBtnHeight + $scrollDownBtnHeight;
 
 						handle = track.firstChild;
 						handleHeight = Math.max( pct * trackHeight,
@@ -818,13 +818,13 @@
 						paneWidth = $this.innerWidth();
 						pct = paneWidth / this.scrollWidth;
 						track = $( trackWrapper ).find( '.enscroll-track' )[0];
-						$scrollLeftBtn = $( trackWrapper ).find( '.' + settings.scrollLeftButtonClass );
-						$scrollRightBtn = $( trackWrapper ).find( '.' + settings.scrollRightButtonClass );
+						$scrollLeftBtnWidth = $( trackWrapper ).find( '.' + settings.scrollLeftButtonClass ).outerWidth() || 0;
+						$scrollRightBtnWidth = $( trackWrapper ).find( '.' + settings.scrollRightButtonClass ).outerWidth() || 0;
 
 						trackWidth = settings.verticalScrolling ?
 							paneWidth - $( data.verticalTrackWrapper ).find( '.enscroll-track' ).outerWidth() :
 							paneWidth;
-						trackWidth -= $( track ).outerWidth() - $( track ).width() + $scrollLeftBtn.outerWidth() + $scrollRightBtn.outerWidth();
+						trackWidth -= $( track ).outerWidth() - $( track ).width() + $scrollLeftBtnWidth + $scrollRightBtnWidth;
 
 						handle = track.firstChild;
 						handleWidth = Math.max( pct * trackWidth,
